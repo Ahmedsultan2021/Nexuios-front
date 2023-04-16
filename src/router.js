@@ -122,31 +122,13 @@ const router = new Router({
   }
 });
 
-
 router.beforeEach((to, from, next) => {
-  axios.get('/authenticated')
-    .then(response => {
-      const isAuthenticated = response.data.authenticated;
-
-      // check if the route requires authentication
-      if (to.matched.some(record => record.meta.requiresAuth)) {
-        // check if the user is authenticated
-        if (!isAuthenticated) {
-          // redirect to the login page
-          next({name:"login"});
-        } else {
-          // continue to the route
-          next();
-        }
-      } else {
-        // continue to the route
-        next();
-      }
-    })
-    .catch(error => {
-      console.log(error);
-      next();
-    });
+  const token = localStorage.getItem("token");
+  if (!token && to.name !== "login" && to.name !== "display-2") {
+    next({ name: "login" });
+  } else {
+    next();
+  }
 });
 
-export default router;
+export default router
