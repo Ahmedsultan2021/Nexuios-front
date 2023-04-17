@@ -72,12 +72,12 @@
                   <i class="ni business_briefcase-24 mr-2"></i>role
                   - {{user.role}}
                 </div>
-                <div>
+                <!-- <div>
                   <i class="ni education_hat mr-2"></i>University of Computer
                   Science
-                </div>
+                </div> -->
               </div>
-              <div class="mt-5 py-5 border-top text-center">
+              <!-- <div class="mt-5 py-5 border-top text-center">
                 <div class="row justify-content-center">
                   <div class="col-lg-9">
                     <p>
@@ -90,7 +90,7 @@
                     <a href="#">Show more</a>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </card>
         </div>

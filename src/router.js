@@ -30,10 +30,10 @@ const router = new Router({
     },
     {
       path: "/",
-      name: "display-2",
+      name: "login",
       components: {
         header: AppHeader,
-        default: Home,
+        default: Login,
         footer: AppFooter
       }
     },
