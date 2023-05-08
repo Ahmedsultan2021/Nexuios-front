@@ -16,8 +16,6 @@
       <section class="section section-skew">
         <div class="container">
           
-
-
           <card shadow class="card-profile mt--300" no-body>
             <div class="px-4">
               <div class="row justify-content-center">
@@ -416,7 +414,7 @@ export default {
       rooms: [],
       reservations: [],
       city: null,
-      users:[],
+      users: [],
       q: null,
       reservationId: "",
       dateToSearch: "",
@@ -458,11 +456,10 @@ export default {
   mounted() {
     this.getallRooms();
     this.getallReservaions();
-        this.getAllUsers();
-
+    this.getAllUsers();
   },
   methods: {
-       getAllUsers() {
+    getAllUsers() {
       axios
         .get("/users")
         .then((response) => {
@@ -473,26 +470,22 @@ export default {
           console.log(response);
         });
     },
-    deleteuser(userId){
-              axios
-              .delete(`/deleteUser/${userId}`)
-              .then((response) => {
-                console.log(response.data);
-                Swal.fire('user deleted successfully')
+    deleteuser(userId) {
+      axios
+        .delete(`/deleteUser/${userId}`)
+        .then((response) => {
+          console.log(response.data);
+          Swal.fire("user deleted successfully");
 
-              
-                this.users = this.users.filter(
-                  (user) => user.id !== userId
-                );
-              })
-              .catch((error) => {
-                Swal.fire('error')
+          this.users = this.users.filter((user) => user.id !== userId);
+        })
+        .catch((error) => {
+          Swal.fire("error");
 
-                console.log(error);
-              });
+          console.log(error);
+        });
     },
- 
-  
+
     showform(id, type, room_id, date, st, en, num) {
       this.modals.modal3 = true;
       this.reservationid = id;
@@ -533,7 +526,7 @@ export default {
             })
             .catch((error) => {
               const err = error.response.data.errors;
-              const err2 =  Object.values(err)[0]
+              const err2 = Object.values(err)[0];
               console.log(error);
               Swal.fire({
                 title: "Error!",
@@ -558,20 +551,20 @@ export default {
           console.error(error);
         });
     },
-  search() {
-  const q = this.q;
-  axios
-    .get("/reservations2/search", { params: { q } })
-    .then((response) => {
-      console.log(response)
-     const result = response.data[0].result;
-     console.log(result)
-      this.reservations = result; // Replace current contents with new results
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  },
+    search() {
+      const q = this.q;
+      axios
+        .get("/reservations2/search", { params: { q } })
+        .then((response) => {
+          console.log(response);
+          const result = response.data[0].result;
+          console.log(result);
+          this.reservations = result; // Replace current contents with new results
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
     getallReservaions() {
       axios
         .get("/reservations2/last")
@@ -657,14 +650,12 @@ export default {
           }
         });
     },
-      logout() {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
+    logout() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       this.$router.push("/login");
-      }
-   
+    },
   },
-
 };
 </script>
 <style scoped>
