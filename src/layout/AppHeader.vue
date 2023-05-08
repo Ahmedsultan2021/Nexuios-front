@@ -4,7 +4,7 @@
       <router-link slot="brand" class="navbar-brand mr-lg-5" to="/">
         <img src="
         
-        /brand/logo.jpg" alt="logo" />
+        /brand/logo.jpg" alt="logo0" />
       </router-link>
 
       <div class="row" slot="content-header" slot-scope="{ closeMenu }">
